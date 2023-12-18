@@ -1,0 +1,1 @@
+# C#_OOP_HW006_class_inherit_r00
