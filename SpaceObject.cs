@@ -42,7 +42,7 @@ namespace C__OOP_HW006_class_inherit_r00
 
         public virtual void UpdateP3D()
         {
-            orbit.IndexV();
+            orbit.UpdateIndexV();
             int i = orbit.indexV;
             point3D.coordX += vector.ArrVectors[i].coordX * orbit.MFACTORS[orbit.phase, 0];
             point3D.coordY += vector.ArrVectors[i].coordY * orbit.MFACTORS[orbit.phase, 1];

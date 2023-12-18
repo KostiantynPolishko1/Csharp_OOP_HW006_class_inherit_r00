@@ -2,22 +2,21 @@
 {
     DataObject EarthData = new(200, "Mars");
     Material EarthMaterial = new("Carbon", "Ferum", "Silicium", "Cobalt");
-    Point3D Earth_p3D = new(0, 0, 0);
-    VectorPoint3D Earth_vp3D = new(new Point3D[] {new Point3D(1, 0, 0), new Point3D(3, 1, 0), new Point3D(3, 2, 0), new Point3D(2, 3, 0), new Point3D(1, 3, 0), new Point3D(0, 1, 0) });
+    Point3D Earth_p3D = new(14, 0, 0);
+    VectorPoint3D Earth_vp3D = new(new Point3D[] { new Point3D(1, 0, 0), new Point3D(3, 1, 0), new Point3D(3, 2, 0), new Point3D(2, 3, 0), new Point3D(1, 3, 0), new Point3D(0, 1, 0) });
 
-    Earth earth = new(true, EarthData, EarthMaterial, Earth_p3D, Earth_vp3D);
-    Console.WriteLine($"{earth.point3D.coordX} - {earth.point3D.coordY}\n");
+    Earth earth = new(true, 'e', EarthData, EarthMaterial, Earth_p3D, Earth_vp3D);
 
-    int i = 0;
+    SpaceGrid space_grid = new('.', 30, 30);
+    ConsoleKeyInfo press;
+    press = Console.ReadKey();
+
     do
     {
+        space_grid.ShowGrid();
+        space_grid.FillGrid(earth.s_earth, earth.point3D.coordX, earth.point3D.coordY);
         earth.UpdateP3D();
-        Console.Write($"{earth.orbit.indexV} -> {earth.orbit.phase} : {earth.orbit.MFACTORS[earth.orbit.phase, 0]} | {earth.orbit.MFACTORS[earth.orbit.phase, 1]} : ");
-        Console.WriteLine($"{earth.point3D.coordX} - {earth.point3D.coordY}");
-
-        i += 1;
-        if (i % 6 == 0)
-            Console.WriteLine();
-
-    } while (i < 60);
+        Thread.Sleep(200);
+        Console.Clear();
+    } while (press.Key != ConsoleKey.Escape);
 }

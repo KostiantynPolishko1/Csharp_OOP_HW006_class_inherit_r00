@@ -19,11 +19,11 @@ namespace C__OOP_HW006_class_inherit_r00
             countV = 0;
             indexV = -1;
             PHASE_SIZE = 4;
-            MFACTORS = new int[,]{ {1, 1}, {-1, 1}, {-1, -1}, {1, -1} };
+            MFACTORS = new int[,]{ {-1, 1}, {1, 1}, {1, -1}, {-1, -1} };
             this.lengthV = lengthV;
         }
 
-        public void IndexV()
+        public void UpdateIndexV()
         {
             phase += countV == lengthV ? 1 : 0;
             bool flag = phase % 2 == 0; ;
