@@ -1,6 +1,6 @@
 ﻿namespace C__OOP_HW006_class_inherit_r00
 {
-    internal class VectorPoint3D
+    public class VectorPoint3D
     {
         private Point3D[]? arrVectors;
         public Point3D[] ArrVectors

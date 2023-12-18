@@ -1,6 +1,6 @@
 ﻿namespace C__OOP_HW006_class_inherit_r00
 {
-    internal class DataObject
+    public class DataObject
     {
         private int speed;
         public int Speed
@@ -14,7 +14,6 @@
                 }
             }
         }
-
 
         public string? name { get; set; }
 

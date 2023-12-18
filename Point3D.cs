@@ -1,6 +1,6 @@
 ﻿namespace C__OOP_HW006_class_inherit_r00
 {
-    internal class Point3D
+    public class Point3D
     {
         public int coordX { get; set; }
         public int coordY { get; set; }

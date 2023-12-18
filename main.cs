@@ -1,35 +1,23 @@
 ﻿using C__OOP_HW006_class_inherit_r00;
 {
-    //===============class point3D===============//
-    Point3D point3D = new(0, 0, 0);
-    //Console.WriteLine(point3D.ToString());
+    DataObject EarthData = new(200, "Mars");
+    Material EarthMaterial = new("Carbon", "Ferum", "Silicium", "Cobalt");
+    Point3D Earth_p3D = new(0, 0, 0);
+    VectorPoint3D Earth_vp3D = new(new Point3D[] {new Point3D(1, 0, 0), new Point3D(3, 1, 0), new Point3D(3, 2, 0), new Point3D(2, 3, 0), new Point3D(1, 3, 0), new Point3D(0, 1, 0) });
 
-    //===============class VectorPoint3D(Point3D)===============//
-    VectorPoint3D vEarth = new(new Point3D[] {new Point3D(1, 0, 0), new Point3D(3, 1, 0), new Point3D(3, 2, 0), new Point3D(2, 3, 0), new Point3D(1, 3, 0), new Point3D(0, 1, 0) });
-    //Console.WriteLine(vEarth.ToString());
+    Earth earth = new(true, EarthData, EarthMaterial, Earth_p3D, Earth_vp3D);
+    Console.WriteLine($"{earth.point3D.coordX} - {earth.point3D.coordY}\n");
 
-    //===============class Material===============//
-    Material material = new("Carbon", "Ferum", "Silicium", "Cobalt");
-    //Console.WriteLine(material.GetInfo());
+    int i = 0;
+    do
+    {
+        earth.UpdateP3D();
+        Console.Write($"{earth.orbit.indexV} -> {earth.orbit.phase} : {earth.orbit.MFACTORS[earth.orbit.phase, 0]} | {earth.orbit.MFACTORS[earth.orbit.phase, 1]} : ");
+        Console.WriteLine($"{earth.point3D.coordX} - {earth.point3D.coordY}");
 
-    //===============class DataObject===============//
-    DataObject dataObject = new(200, "Mars");
-    //Console.WriteLine(dataObject.GetInfo());
+        i += 1;
+        if (i % 6 == 0)
+            Console.WriteLine();
 
-    //===============class SpaceObject===============//
-    SpaceObject spaceObject = new();
-    Console.WriteLine($"{spaceObject.GetInfo()}");
-
-    spaceObject.data = dataObject;
-    Console.WriteLine($"{spaceObject.GetInfo()}");
-
-    spaceObject.material = material;
-    Console.WriteLine($"{spaceObject.GetInfo()}");
-
-    spaceObject.point3D = point3D;
-    Console.WriteLine($"{spaceObject.GetInfo()}");
-
-    spaceObject.vector = vEarth;
-    Console.WriteLine($"{spaceObject.GetInfo()}");
-
+    } while (i < 60);
 }
