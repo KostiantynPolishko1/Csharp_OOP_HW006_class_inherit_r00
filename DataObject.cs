@@ -27,7 +27,7 @@
 
         public string GetInfo()
         {
-            return $"{name} | {speed}";
+            return $"name -> {name} | speed -> {speed}";
         }
     }
 }

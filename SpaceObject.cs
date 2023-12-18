@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 
 namespace C__OOP_HW006_class_inherit_r00
 {
@@ -18,8 +19,6 @@ namespace C__OOP_HW006_class_inherit_r00
         }
         public SpaceObject() : this(null, null, null, null) { }
 
-        public SpaceObject(in DataObject data, in Material material) : this(data, material, null, null) { }
-
         public SpaceObject(in DataObject? data, in Material? material, in Point3D? point3D, in VectorPoint3D? vector)
         {
             id = ++_generator;
@@ -28,16 +27,15 @@ namespace C__OOP_HW006_class_inherit_r00
             this.point3D = point3D;
             this.vector = vector;
 
-            orbit = new(this.vector.ArrVectors.Length);
+            if(vector != null) { orbit = new(this.vector.ArrVectors.Length); }
+            else { orbit = new(0); }
         }
 
-        public string GetInfo()
+        public virtual string GetInfo()
         {
-            return $"id - {id}" +
-                $"\n\t dates: {(data != null ? data.GetInfo() : 0)}" +
-                $"\n\t point3D: {(point3D != null ? point3D.ToString() : 0)}" +
-                $"\n\tmaterial: {(material != null ? material.GetInfo() : 0)}" +
-                $"\n\tvector: {(vector != null ? vector.ToString() : 0)}";
+            return $"id - {id} : {GetType().Name}" + 
+                $"\n\tdates: {(data != null ? data.GetInfo() : 0)}" +
+                $"\n\tmaterial: {(material != null ? material.GetInfo() : 0)}";
         }
 
         public virtual void UpdateP3D()
