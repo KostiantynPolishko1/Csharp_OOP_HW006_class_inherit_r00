@@ -1,4 +1,6 @@
-﻿using C__OOP_HW006_class_inherit_r00;
+﻿using C__OOP_HW006_class_inherit_r00.SpaceGrid_Base;
+using C__OOP_HW006_class_inherit_r00.SpaceObject_Base;
+using C__OOP_HW006_class_inherit_r00.SpaceObject_Inherited;
 
 //================================PLANET MARS INIT DATA================================//
 DataObject MarsData = new(200, "Mars");
@@ -24,23 +26,30 @@ VectorPoint3D Comet_vp3D = new(new Point3D[] { new Point3D(2, 1, 0), new Point3D
         new Sun('s', SunData, SunMaterial, Sun_p3D, null),
         new Comet(true, 'c', CometData, CometMaterial, Comet_p3D, Comet_vp3D)};
 
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.BackgroundColor = ConsoleColor.Black;
+
     foreach(SpaceObject item in CelestialBodies)
     {
         Console.WriteLine(item.GetInfo());
     }
 
-    /*SpaceGrid space_grid = new('.', 30, 30);
+    Console.WriteLine($"\n\tpress 2xtime -> {ConsoleKey.Enter}");
+
+    SpaceGrid space_grid = new(' ', 30, 30);
     ConsoleKeyInfo press;
 
     press = Console.ReadKey();
+    Console.ForegroundColor = ConsoleColor.Black;
+    Console.BackgroundColor = ConsoleColor.DarkBlue;
 
     do
     {
         space_grid.ShowGrid();
-        space_grid.FillGrid(earth.s_earth, earth.point3D.coordX, earth.point3D.coordY);
-        earth.UpdateP3D();
-        Thread.Sleep(200);
+        space_grid.FillGrid(CelestialBodies[0]);
+        CelestialBodies[0].UpdateP3D();
+        Thread.Sleep(16);
         Console.Clear();
 
-    } while (press.Key != ConsoleKey.Escape);*/
+    } while (press.Key != ConsoleKey.Escape);
 }

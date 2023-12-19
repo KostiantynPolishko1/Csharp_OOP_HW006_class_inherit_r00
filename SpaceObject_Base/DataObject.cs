@@ -1,4 +1,4 @@
-﻿namespace C__OOP_HW006_class_inherit_r00
+﻿namespace C__OOP_HW006_class_inherit_r00.SpaceObject_Base
 {
     public class DataObject
     {
